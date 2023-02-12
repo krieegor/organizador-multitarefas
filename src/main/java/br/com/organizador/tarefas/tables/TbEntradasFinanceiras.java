@@ -33,10 +33,14 @@ public class TbEntradasFinanceiras {
     @JoinColumn(name = "ENTRADA_FINANCEIRA_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long entradaFinanceiraId;
-    @ManyToOne // essa notacao significa que muitas entradas financeiras estarao associados a um mesmo e unico login
+    @ManyToOne // essa notacao significa que muitas entradas financeiras estarao associados a um login
     @NotNull(message = "Toda entrada financeira precisa de um login associado (login_id)")
     @JoinColumn(name = "LOGIN_ID")
     public TbLogins loginId;
+
+    @ManyToOne // muitas entradaFinanceiraId fazem parte de apenas um totalEntradaFinanceiraId
+    @JoinColumn(name = "TOTAL_ENTRADA_FINANCEIRA_ID")
+    public TbTotalEntradasFinanceiras totalEntradaFinanceiraId;
 
     @Column(name = "DATA_INCLUSAO_RENDA")
     @NotBlank(message = "O campo dataInclusaoRenda não pode estar em branco")

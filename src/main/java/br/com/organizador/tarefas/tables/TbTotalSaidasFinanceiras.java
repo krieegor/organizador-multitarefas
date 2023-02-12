@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -18,6 +19,7 @@ import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -33,13 +35,12 @@ public class TbTotalSaidasFinanceiras {
     @Column(name = "TOTAL_SAIDA_FINANCEIRA_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long totalSaidaFinanceiraId;
-    @OneToOne // essa notacao significa que um unico total de entradas financeiras estara associado a um unico login
+    @OneToOne // essa notacao significa que um unico total de saidas financeiras estara associado a um login
     @JoinColumn(name = "LOGIN_ID")
     public TbLogins loginId;
-
-    @OneToOne // essa notacao significa que um unico total de saidas financeiras estara associado a uma uma saida financeira
+    @OneToMany // essa notacao significa que um unico totalSaidaFinanceira pode ser associado a varias saidaFinanceiraId
     @JoinColumn(name = "SAIDA_FINANCEIRA_ID")
-    public TbSaidasFinanceiras saidaFinanceiraId;
+    public List<TbSaidasFinanceiras> saidasFinanceirasId;
 
     @Column(name = "DATA_INCLUSAO_TOTAL_RENDA")
     @NotBlank(message = "O campo dataInclusaoRenda não pode estar em branco")

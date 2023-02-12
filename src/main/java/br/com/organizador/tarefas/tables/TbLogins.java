@@ -32,7 +32,7 @@ public class TbLogins {
     @Column(name = "LOGIN_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long loginId;
-    @ManyToOne // essa notacao significa que muitos logins estarao associados a uma mesma e unica pessoa
+    @ManyToOne // essa notacao indica que muitos logins estarao associados a uma pessoa
     @JoinColumn(name = "PESSOA_ID")
     public TbPessoas pessoaId;
 

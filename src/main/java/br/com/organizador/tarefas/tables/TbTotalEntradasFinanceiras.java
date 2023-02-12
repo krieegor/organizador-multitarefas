@@ -8,10 +8,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +20,7 @@ import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -39,20 +40,20 @@ public class TbTotalEntradasFinanceiras {
     @JoinColumn(name = "LOGIN_ID")
     public TbLogins loginId;
 
-    @OneToOne // essa notacao significa que um unico total de entradas financeiras estara associado a uma uma entrada financeira
+    @OneToMany // essa notacao significa que um unico totalEntradaFinanceiraId pode ser associado a varias entradaFinanceiraId
     @JoinColumn(name = "ENTRADA_FINANCEIRA_ID")
-    public TbEntradasFinanceiras entradaFinanceiraId;
+    public List<TbEntradasFinanceiras> entradaFinanceiraId;
 
     @Column(name = "DATA_INCLUSAO_TOTAL_RENDA")
     @NotBlank(message = "O campo dataInclusaoRenda não pode estar em branco")
-    public LocalDateTime dataInclusaoRenda;
+    public LocalDateTime dataInclusaoTotalRenda;
 
     @Column(name = "DATA_ALTERACAO_TOTAL_RENDA")
     @NotBlank(message = "O campo dataAlteracaoRenda não pode estar em branco")
-    public LocalDateTime dataAlteracaoRenda;
+    public LocalDateTime dataAlteracaoTotalRenda;
 
-    @Column(name = "VALOR_CONSOLIDADO_ENTRADA")
-    private BigDecimal valorConsolidadoEntrada;
+    @Column(name = "VALOR_TOTAL_ENTRADA_FINANCEIRA")
+    private BigDecimal valorTotalEntradaFinanceira;
 
     @Column(name = "DESCRICAO_TOTAL")
     private BigDecimal descricaoTotal;
