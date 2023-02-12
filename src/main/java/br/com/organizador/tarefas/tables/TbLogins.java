@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -28,11 +29,11 @@ import java.time.LocalDateTime;
 public class TbLogins {
 
     @Id
-    @Column(name = "COD_LOGIN")
+    @Column(name = "LOGIN_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cod_login;
+    private Long loginId;
     @ManyToOne // essa notacao significa que muitos logins estarao associados a uma mesma e unica pessoa
-    @Column(name = "PESSOA_ID")
+    @JoinColumn(name = "PESSOA_ID")
     public TbPessoas pessoaId;
 
     @Column(name = "DATA_INCLUSAO_LOGIN")

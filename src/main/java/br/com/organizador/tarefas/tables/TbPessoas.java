@@ -26,9 +26,9 @@ import java.time.LocalDateTime;
 @Table(name = "TB_PESSOAS")
 public class TbPessoas {
     @Id
-    @Column(name = "COD_PESSOA")
+    @Column(name = "PESSOA_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long codPessoa;
+    private Long pessoaId;
 
     @Column(name = "NOME")
     @NotBlank(message = "O campo nome não pode estar em branco")

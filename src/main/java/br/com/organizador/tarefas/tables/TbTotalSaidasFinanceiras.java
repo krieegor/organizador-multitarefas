@@ -7,11 +7,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,20 +26,20 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 
-@Table(name = "TB_TOTAL_ENTRADAS_FINANCEIRAS")
-public class TbTotalEntradasFinanceiras {
+@Table(name = "TB_TOTAL_SAIDAS_FINANCEIRAS")
+public class TbTotalSaidasFinanceiras {
 
     @Id
-    @Column(name = "TOTAL_ENTRADA_FINANCEIRA_ID")
+    @Column(name = "TOTAL_SAIDA_FINANCEIRA_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long totalEntradaFinanceiraId;
+    private Long totalSaidaFinanceiraId;
     @OneToOne // essa notacao significa que um unico total de entradas financeiras estara associado a um unico login
     @JoinColumn(name = "LOGIN_ID")
     public TbLogins loginId;
 
-    @OneToOne // essa notacao significa que um unico total de entradas financeiras estara associado a uma uma entrada financeira
-    @JoinColumn(name = "ENTRADA_FINANCEIRA_ID")
-    public TbEntradasFinanceiras entradaFinanceiraId;
+    @OneToOne // essa notacao significa que um unico total de saidas financeiras estara associado a uma uma saida financeira
+    @JoinColumn(name = "SAIDA_FINANCEIRA_ID")
+    public TbSaidasFinanceiras saidaFinanceiraId;
 
     @Column(name = "DATA_INCLUSAO_TOTAL_RENDA")
     @NotBlank(message = "O campo dataInclusaoRenda não pode estar em branco")
@@ -51,8 +49,8 @@ public class TbTotalEntradasFinanceiras {
     @NotBlank(message = "O campo dataAlteracaoRenda não pode estar em branco")
     public LocalDateTime dataAlteracaoRenda;
 
-    @Column(name = "VALOR_CONSOLIDADO_ENTRADA")
-    private BigDecimal valorConsolidadoEntrada;
+    @Column(name = "VALOR_CONSOLIDADO_SAIDA")
+    private BigDecimal valorConsolidadoSaida;
 
     @Column(name = "DESCRICAO_TOTAL")
     private BigDecimal descricaoTotal;

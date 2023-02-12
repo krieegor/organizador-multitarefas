@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -28,13 +29,13 @@ import java.time.LocalDateTime;
 @Table(name = "TB_SAIDAS_FINANCEIRAS")
 public class TbSaidasFinanceiras {
     @Id
-    @Column(name = "COD_SAIDA_FINANCEIRA")
+    @Column(name = "SAIDA_FINANCEIRA_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long codSaidaFinanceira;
+    private Long saidaFinanceiraId;
 
     @ManyToOne // essa notacao significa que muitas saidas financeiras estarao associados a um mesmo e unico login
     @NotNull(message = "Toda entrada financeira precisa de um login associado (login_id)")
-    @Column(name = "LOGIN_ID")
+    @JoinColumn(name = "LOGIN_ID")
     public TbLogins loginId;
 
     @Column(name = "DATA_INCLUSAO_SAIDA_FINANCEIRA")
