@@ -8,8 +8,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +24,7 @@ import java.time.LocalDateTime;
 @Setter
 
 @Table(name = "TB_PESSOAS")
-public class TbUsuarios {
+public class TbPessoas {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,20 +43,21 @@ public class TbUsuarios {
     private String telefoneCelular;
 
     @Column(name = "TIPO_PESSOA")
+    @NotBlank(message = "O campo tipoPessoa não pode estar em branco")
     private String tipoPessoa;
 
     @Column(name = "CPF_CNPJ")
     @NotBlank(message = "O campo cpfCnpj não pode estar em branco")
     private String cpfCnpj;
 
-    @Column(name = "NIVEL_ACESSO")
-    private String nivelAcesso;
-
     @Column(name = "DATA_INCLUSAO")
     @NotBlank(message = "O campo dataInclusao não pode estar em branco")
     public LocalDateTime dataInclusao;
 
     @Column(name = "DATA_ALTERACAO")
+    @NotBlank(message = "O campo dataAlteracao não pode estar em branco")
     public LocalDateTime dataAlteracao;
+
+
 
 }
