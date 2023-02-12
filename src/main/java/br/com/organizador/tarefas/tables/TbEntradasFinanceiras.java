@@ -30,7 +30,7 @@ import java.time.LocalDateTime;
 public class TbEntradasFinanceiras {
 
     @Id
-    @JoinColumn(name = "ENTRADA_FINANCEIRA_ID")
+    @Column(name = "ENTRADA_FINANCEIRA_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long entradaFinanceiraId;
     @ManyToOne // essa notacao significa que muitas entradas financeiras estarao associados a um login
