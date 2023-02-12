@@ -26,11 +26,11 @@ import java.time.LocalDateTime;
 @Table(name = "TB_PESSOAS")
 public class TbPessoas {
     @Id
-    @Column
+    @Column(name = "COD_PESSOA")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cod_pessoa;
 
-    @Column(name = "NOME", nullable=false, length=5000)
+    @Column(name = "NOME")
     @NotBlank(message = "O campo nome não pode estar em branco")
     private String nome;
 

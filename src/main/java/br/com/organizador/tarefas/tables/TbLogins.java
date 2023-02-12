@@ -28,7 +28,7 @@ import java.time.LocalDateTime;
 public class TbLogins {
 
     @Id
-    @Column
+    @Column(name = "COD_LOGIN")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cod_login;
     @ManyToOne // essa notacao significa que muitos logins estarao associados a uma mesma e unica pessoa
@@ -52,7 +52,7 @@ public class TbLogins {
 
     @Column(name = "NIVEL_ACESSO")
     @NotBlank(message = "O campo nivelAcesso não pode estar em branco")
-    private String nivelAcesso;
+    private Long nivelAcesso;
 
     @Column(name = "LOGIN_BLOQUEADO")
     @NotNull(message = "O campo nivelAcesso não pode estar em branco")
