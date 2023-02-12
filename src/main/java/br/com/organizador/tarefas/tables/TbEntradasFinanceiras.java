@@ -31,11 +31,11 @@ public class TbEntradasFinanceiras {
     @Id
     @Column(name = "COD_ENTRADA_FINANCEIRA")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cod_entrada_financeira;
+    private Long codEntradaFinanceira;
     @ManyToOne // essa notacao significa que muitas entradas financeiras estarao associados a um mesmo e unico login
     @NotNull(message = "Toda entrada financeira precisa de um login associado (login_id)")
     @Column(name = "LOGIN_ID")
-    public TbLogins login_id;
+    public TbLogins loginId;
 
     @Column(name = "DATA_INCLUSAO_RENDA")
     @NotBlank(message = "O campo dataInclusaoRenda não pode estar em branco")

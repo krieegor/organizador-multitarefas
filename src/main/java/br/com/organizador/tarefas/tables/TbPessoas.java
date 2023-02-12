@@ -28,7 +28,7 @@ public class TbPessoas {
     @Id
     @Column(name = "COD_PESSOA")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cod_pessoa;
+    private Long codPessoa;
 
     @Column(name = "NOME")
     @NotBlank(message = "O campo nome não pode estar em branco")

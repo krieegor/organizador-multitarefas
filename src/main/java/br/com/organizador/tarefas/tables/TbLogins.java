@@ -33,7 +33,7 @@ public class TbLogins {
     private Long cod_login;
     @ManyToOne // essa notacao significa que muitos logins estarao associados a uma mesma e unica pessoa
     @Column(name = "PESSOA_ID")
-    public TbPessoas pessoa_id;
+    public TbPessoas pessoaId;
 
     @Column(name = "DATA_INCLUSAO_LOGIN")
     @NotBlank(message = "O campo dataInclusaoLogin não pode estar em branco")
