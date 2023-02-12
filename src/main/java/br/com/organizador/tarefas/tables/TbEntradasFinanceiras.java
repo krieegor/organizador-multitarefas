@@ -36,7 +36,7 @@ public class TbEntradasFinanceiras {
     @NotNull(message = "Toda entrada financeira precisa de um login associado (login_id)")
     @Column(name = "LOGIN_ID")
     public TbLogins login_id;
-    
+
     @Column(name = "DATA_INCLUSAO_RENDA")
     @NotBlank(message = "O campo dataInclusaoRenda não pode estar em branco")
     public LocalDateTime dataInclusaoRenda;
@@ -61,7 +61,7 @@ public class TbEntradasFinanceiras {
     private BigDecimal rendaBrutaLiquida;
 
     @Column(name = "DESCRICAO_RENDA_VARIAVEL")
-    private String descricaoRendaFixa;
+    private String descricaoRendaVariavel;
 
     @Column(name = "VALE_REFEICAO")
     private BigDecimal valeRefeicao;
@@ -71,6 +71,5 @@ public class TbEntradasFinanceiras {
 
     @Column(name = "OUTRAS_RENDAS")
     private BigDecimal outrasRendas;
-
 
 }
