@@ -1,4 +1,4 @@
-package br.com.organizador.tarefas.tables;
+package br.com.organizador.tarefas.tables.usuariosEntities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

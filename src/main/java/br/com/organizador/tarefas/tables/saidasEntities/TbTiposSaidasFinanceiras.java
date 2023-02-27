@@ -1,6 +1,5 @@
-package br.com.organizador.tarefas.tables.entradas;
+package br.com.organizador.tarefas.tables.saidasEntities;
 
-import br.com.organizador.tarefas.tables.saidasEntity.TbSaidasFinanceiras;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,17 +24,17 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 
-@Table(name = "TB_TIPOS_ENTRADAS_FINANCEIRAS")
-public class TbTiposEntradasFinanceiras {
+@Table(name = "TB_TIPOS_SAIDAS_FINANCEIRAS")
+public class TbTiposSaidasFinanceiras {
 
     @Id
-    @Column(name = "TIPO_ENTRADA_FINANCEIRA_ID")
+    @Column(name = "TIPO_SAIDA_FINANCEIRA_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long tipoEntradaFinanceiraId;
+    private Long tipoSaidaFinanceiraId;
 
     @OneToOne // essa notacao significa que um tipoSaidaFinanceira esta associado a uma saida financeira
-    @JoinColumn(name = "ENTRADA_FINANCEIRA_ID")
-    public TbEntradasFinanceiras entradaFinanceiraId;
+    @JoinColumn(name = "SAIDA_FINANCEIRA_ID")
+    public TbSaidasFinanceiras saidaFinanceiraId;
     @Column(name = "NOME_TIPO_SAIDA")
     public LocalDateTime nomeTipoSaida;
 

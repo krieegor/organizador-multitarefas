@@ -1,12 +1,13 @@
-package br.com.organizador.tarefas.tables;
+package br.com.organizador.tarefas.tables.entradasEntities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,32 +24,22 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 
-@Table(name = "TB_PESSOAS")
-public class TbPessoas {
+@Table(name = "TB_TIPOS_ENTRADAS_FINANCEIRAS")
+public class TbTiposEntradasFinanceiras {
+
     @Id
-    @Column(name = "PESSOA_ID")
+    @Column(name = "TIPO_ENTRADA_FINANCEIRA_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long pessoaId;
+    private Long tipoEntradaFinanceiraId;
 
-    @Column(name = "NOME")
-    @NotBlank(message = "O campo nome não pode estar em branco")
-    private String nome;
+    @OneToOne // essa notacao significa que um tipoSaidaFinanceira esta associado a uma saida financeira
+    @JoinColumn(name = "ENTRADA_FINANCEIRA_ID")
+    public TbEntradasFinanceiras entradaFinanceiraId;
+    @Column(name = "NOME_TIPO_SAIDA")
+    public LocalDateTime nomeTipoSaida;
 
-    @Column(name = "EMAIL")
-    @Email(message = "Endereço de e-mail informado está invalido")
-    private String email;
-
-    @Column(name = "TELEFONE_CELULAR")
-    @NotBlank(message = "O campo telefone não pode estar em branco")
-    private String telefoneCelular;
-
-    @Column(name = "TIPO_PESSOA")
-    @NotBlank(message = "O campo tipoPessoa não pode estar em branco")
-    private String tipoPessoa;
-
-    @Column(name = "CPF_CNPJ")
-    @NotBlank(message = "O campo cpfCnpj não pode estar em branco")
-    private String cpfCnpj;
+    @Column(name = "DESCRICAO_TIPO_SAIDA")
+    public LocalDateTime descricaoTipoSaida;
 
     @Column(name = "DATA_INCLUSAO")
     @NotBlank(message = "O campo dataInclusao não pode estar em branco")
@@ -57,7 +48,5 @@ public class TbPessoas {
     @Column(name = "DATA_ALTERACAO")
     @NotBlank(message = "O campo dataAlteracao não pode estar em branco")
     public LocalDateTime dataAlteracao;
-
-
 
 }
