@@ -1,13 +1,13 @@
-package br.com.organizador.tarefas.tables;
+package br.com.organizador.tarefas.tables.saidasEntity;
 
 
+import br.com.organizador.tarefas.tables.TbLogins;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -29,31 +29,30 @@ import java.util.List;
 @Getter
 @Setter
 
-@Table(name = "TB_TOTAL_ENTRADAS_FINANCEIRAS")
-public class TbTotalEntradasFinanceiras {
+@Table(name = "TB_TOTAL_SAIDAS_FINANCEIRAS")
+public class TbTotalSaidasFinanceiras {
 
     @Id
-    @Column(name = "TOTAL_ENTRADA_FINANCEIRA_ID")
+    @Column(name = "TOTAL_SAIDA_FINANCEIRA_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long totalEntradaFinanceiraId;
-    @OneToOne // essa notacao significa que um unico total de entradas financeiras estara associado a um unico login
+    private Long totalSaidaFinanceiraId;
+    @OneToOne // essa notacao significa que um unico total de saidas financeiras estara associado a um login
     @JoinColumn(name = "LOGIN_ID")
     public TbLogins loginId;
-
-    @OneToMany // essa notacao significa que um unico totalEntradaFinanceiraId pode ser associado a varias entradaFinanceiraId
-    @JoinColumn(name = "ENTRADA_FINANCEIRA_ID")
-    public List<TbEntradasFinanceiras> entradaFinanceiraId;
+    @OneToMany // essa notacao significa que um unico totalSaidaFinanceira pode ser associado a varias saidaFinanceiraId
+    @JoinColumn(name = "SAIDA_FINANCEIRA_ID")
+    public List<TbSaidasFinanceiras> saidasFinanceirasId;
 
     @Column(name = "DATA_INCLUSAO_TOTAL_RENDA")
     @NotBlank(message = "O campo dataInclusaoRenda não pode estar em branco")
-    public LocalDateTime dataInclusaoTotalRenda;
+    public LocalDateTime dataInclusaoRenda;
 
     @Column(name = "DATA_ALTERACAO_TOTAL_RENDA")
     @NotBlank(message = "O campo dataAlteracaoRenda não pode estar em branco")
-    public LocalDateTime dataAlteracaoTotalRenda;
+    public LocalDateTime dataAlteracaoRenda;
 
-    @Column(name = "VALOR_TOTAL_ENTRADA_FINANCEIRA")
-    private BigDecimal valorTotalEntradaFinanceira;
+    @Column(name = "VALOR_CONSOLIDADO_SAIDA")
+    private BigDecimal valorConsolidadoSaida;
 
     @Column(name = "DESCRICAO_TOTAL")
     private BigDecimal descricaoTotal;

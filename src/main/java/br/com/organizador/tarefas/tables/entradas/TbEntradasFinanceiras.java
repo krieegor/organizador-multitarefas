@@ -1,5 +1,6 @@
-package br.com.organizador.tarefas.tables;
+package br.com.organizador.tarefas.tables.entradas;
 
+import br.com.organizador.tarefas.tables.TbLogins;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
